@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_v2/config/theme/app_styles.dart';
+import 'package:news_v2/core/utils/assets_manager.dart';
+import 'package:news_v2/models/category/category_model.dart';
+
+class CategoryItem extends StatelessWidget {
+  CategoryItem({required this.category,required this.index});
+
+  CategoryModel category;
+  int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          color: category.color,
+          borderRadius:BorderRadiusDirectional.only(
+            topStart: const Radius.circular(25),
+            topEnd: const Radius.circular(25),
+            bottomStart: Radius.circular(index.isEven?20 :0),
+            bottomEnd: Radius.circular(index.isOdd?20 :0),
+          ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: 132.w,
+            height: 118.h,
+            child: Image.asset(
+              category.imageName,
+              fit: BoxFit.contain,
+            ),
+          ),
+          Text(
+            category.name,
+            style: AppStyles.categoryTitle,
+          ),
+        ],
+      ),
+    );
+  }
+}

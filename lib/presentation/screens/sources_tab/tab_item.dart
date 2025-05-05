@@ -4,14 +4,14 @@ import 'package:news_v2/config/theme/app_styles.dart';
 import 'package:news_v2/core/utils/colors_manager.dart';
 
 class TabItem extends StatelessWidget {
-   TabItem({
+  const TabItem({
      super.key,
      required this.sourceName,
      required this.isSelected
    });
 
-String sourceName;
-bool isSelected;
+final String sourceName;
+final bool isSelected;
 
   @override
   Widget build(BuildContext context) {

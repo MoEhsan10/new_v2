@@ -7,9 +7,9 @@ import 'package:news_v2/models/category/category_model.dart';
 import 'package:news_v2/presentation/screens/categories/category_item.dart';
 
 class CategoriesGrid extends StatelessWidget {
-   CategoriesGrid({super.key,required this.onCategorySelected});
+const CategoriesGrid({super.key,required this.onCategorySelected});
 
-   void Function(CategoryModel) onCategorySelected;
+ final void Function(CategoryModel) onCategorySelected;
 
   @override
   Widget build(BuildContext context) {

@@ -16,7 +16,7 @@ class AppTheme {
    // ),
   ),
   scaffoldBackgroundColor: Colors.transparent,
-  drawerTheme: DrawerThemeData(
+  drawerTheme: const DrawerThemeData(
    backgroundColor: ColorsManager.white,
   ),
  );

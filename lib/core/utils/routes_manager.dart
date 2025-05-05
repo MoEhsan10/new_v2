@@ -9,9 +9,10 @@ class RoutesManager{
   static Route? router(RouteSettings settings){
     switch(settings.name){
       case homeRoute:
-        return MaterialPageRoute(builder: (context) => HomeScreen(),);
+        return MaterialPageRoute(builder: (context) => const HomeScreen(),);
 
     }
+    return null;
 
   }
 }

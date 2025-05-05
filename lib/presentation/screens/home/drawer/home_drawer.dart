@@ -4,9 +4,9 @@ import 'package:news_v2/config/theme/app_styles.dart';
 import 'package:news_v2/core/utils/colors_manager.dart';
 
 class HomeDrawer extends StatelessWidget {
-   HomeDrawer({required this.onItemSelected});
+ const  HomeDrawer({super.key, required this.onItemSelected});
 
-  void Function(DrawerItem) onItemSelected;
+final  void Function(DrawerItem) onItemSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class HomeDrawer extends StatelessWidget {
                       onTap: () => onItemSelected(DrawerItem.categories),
                       child: Row(
                         children: [
-                          Icon(Icons.menu),
+                          const Icon(Icons.menu),
                           Text('Categories',style: AppStyles.drawerItem,),
                         ],
                       ),
@@ -43,7 +43,7 @@ class HomeDrawer extends StatelessWidget {
                       onTap: () => onItemSelected(DrawerItem.settings),
                       child: Row(
                         children: [
-                          Icon(Icons.settings),
+                          const Icon(Icons.settings),
                           Text('Settings',style: AppStyles.drawerItem,),
                         ],
                       ),

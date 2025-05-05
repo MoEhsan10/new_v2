@@ -3,9 +3,9 @@ import 'package:news_v2/models/source/source_model.dart';
 import 'package:news_v2/presentation/screens/sources_tab/sources_tab.dart';
 
 class CategoryDetails extends StatefulWidget {
-   CategoryDetails ({super.key,required this.categoryId});
+  const CategoryDetails ({super.key,required this.categoryId});
 
-  String categoryId;
+ final String categoryId;
 
   @override
   State<CategoryDetails> createState() => _CategoryDetailsState();

@@ -10,4 +10,5 @@ class AssetsManager{
   static const String entertainment='$base/environment.png';
   static const String science='$base/science.png';
   static const String technology='$base/tech.png';
+  static const String football='$base/football.png';
 }

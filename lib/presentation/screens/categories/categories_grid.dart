@@ -7,7 +7,9 @@ import 'package:news_v2/models/category/category_model.dart';
 import 'package:news_v2/presentation/screens/categories/category_item.dart';
 
 class CategoriesGrid extends StatelessWidget {
-  const CategoriesGrid({super.key});
+   CategoriesGrid({super.key,required this.onCategorySelected});
+
+   void Function(CategoryModel) onCategorySelected;
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +37,17 @@ class CategoriesGrid extends StatelessWidget {
           Expanded(
             child: GridView.builder(
               itemBuilder: (context, index) =>
-                  CategoryItem(category: categories[index],index: index,),
+                  GestureDetector(
+                    onTap: () {onCategorySelected(categories[index]);},
+                  child: CategoryItem(
+                category: categories[index],
+                index: index,
+              )),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   mainAxisSpacing: 24, crossAxisSpacing: 24, crossAxisCount: 2),
               itemCount: categories.length,
             ),
-          )
+          ),
         ],
       ),
     );

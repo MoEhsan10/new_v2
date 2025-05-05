@@ -28,7 +28,11 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('News App',style: AppStyles.appBar,),
+          title: Text(
+            selectedCategory != null
+                ? selectedCategory!.name
+                : selectedDrawerItem == DrawerItem.categories ?
+            'News App': 'Settings',style: AppStyles.appBar,),
           centerTitle: true,
         ),
         drawer: HomeDrawer(onItemSelected: onDrawerItemSelected),

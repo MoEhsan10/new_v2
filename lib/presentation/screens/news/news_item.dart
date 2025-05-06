@@ -2,16 +2,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_v2/config/theme/app_styles.dart';
-import 'package:news_v2/core/utils/assets_manager.dart';
 import 'package:news_v2/presentation/screens/widgets/loading_indicator.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-class NewsItem extends StatelessWidget {
-  const NewsItem({super.key});
+import '../../../data/api/reponses/news/news.dart';
 
+class NewsItem extends StatelessWidget {
+  const NewsItem({super.key, required this.news});
+  final News news;
   @override
   Widget build(BuildContext context) {
-    final fifteenAgo = DateTime.now().subtract(const Duration(minutes: 15));
+    // final fifteenAgo = DateTime.now().subtract(const Duration(minutes: 15));
 
     return Padding(
       padding: REdgeInsets.symmetric(vertical: 8, horizontal: 24),
@@ -21,7 +22,7 @@ class NewsItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(5.r),
             child: CachedNetworkImage(
-              imageUrl: AssetsManager.football,
+              imageUrl: news.urlToImage ?? "https://i.sstatic.net/y9DpT.jpg",
               height: MediaQuery.sizeOf(context).height*0.25,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -30,14 +31,14 @@ class NewsItem extends StatelessWidget {
             ),
           ),
           SizedBox(height: 8.h),
-          Text('BBC News', style: AppStyles.sourceName,),
+          Text(news.source?.name ?? '' , style: AppStyles.sourceName,),
           SizedBox(height: 4.h),
-          Text("Why are football's biggest clubs starting a new tournament?", style: AppStyles.articleTitle,),
+          Text(news.title ?? '', style: AppStyles.articleTitle,),
           SizedBox(height: 2.h),
           Align(
             alignment: AlignmentDirectional.centerEnd,
             child: Text(
-              timeago.format(fifteenAgo),
+              timeago.format(news.publishedAt!),
               style: AppStyles.sourceName.copyWith(fontSize: 14.sp),
             ),
           ),

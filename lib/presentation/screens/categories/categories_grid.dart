@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_v2/config/theme/app_styles.dart';
 import 'package:news_v2/core/utils/assets_manager.dart';
 import 'package:news_v2/core/utils/colors_manager.dart';
+import 'package:news_v2/core/utils/strings_manager.dart';
 import 'package:news_v2/models/category/category_model.dart';
 import 'package:news_v2/presentation/screens/categories/category_item.dart';
 
@@ -13,14 +14,14 @@ const CategoriesGrid({super.key,required this.onCategorySelected});
 
   @override
   Widget build(BuildContext context) {
-    List<CategoryModel> categories = List.generate(
-      6,
-      (index) => CategoryModel(
-          id: '12',
-          name: 'sports',
-          color: ColorsManager.red,
-          imageName: AssetsManager.sports),
-    );
+    List<CategoryModel> categories = [
+      CategoryModel(id: 'sports', name: StringManager.sports, color: ColorsManager.red, imageName: AssetsManager.sports),
+      CategoryModel(id: 'general', name: StringManager.general, color: ColorsManager.navy, imageName: AssetsManager.general),
+      CategoryModel(id: 'health', name: StringManager.health, color: ColorsManager.pink, imageName: AssetsManager.health),
+      CategoryModel(id: 'business', name: StringManager.business, color: ColorsManager.brown, imageName: AssetsManager.business),
+      CategoryModel(id: 'entertainment', name: StringManager.entertainment, color: ColorsManager.lightBLue, imageName: AssetsManager.entertainment),
+      CategoryModel(id: 'science', name: StringManager.science, color: ColorsManager.yellow, imageName: AssetsManager.science),
+    ];
 
     return Padding(
       padding: REdgeInsets.symmetric(horizontal: 40),

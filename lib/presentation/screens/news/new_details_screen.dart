@@ -21,7 +21,8 @@ class NewDetailsScreen extends StatelessWidget {
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text(news.title??''),
+          centerTitle: true,
+          title: Text(news.source?.name??''),
         ),
         body: Container(
           padding: REdgeInsets.symmetric(horizontal: 10, vertical: 30),

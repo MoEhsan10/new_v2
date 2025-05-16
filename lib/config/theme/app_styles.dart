@@ -18,4 +18,5 @@ class AppStyles{
   static final TextStyle publishedAt = GoogleFonts.poppins(fontSize: 13.sp, fontWeight: FontWeight.w400, color:const Color(0xFFA3A3A3));
   static final TextStyle selectedLabel = GoogleFonts.exo(fontSize: 14.sp, fontWeight: FontWeight.w400, color: ColorsManager.white);
   static final TextStyle unselectedLabel = GoogleFonts.exo(fontSize: 14.sp, fontWeight: FontWeight.w400, color: ColorsManager.green);
+  static final TextStyle settingsLabel = GoogleFonts.exo(fontSize: 18.sp, fontWeight: FontWeight.w700, color: const Color(0xFF303030));
 }

@@ -64,7 +64,7 @@ class NewDetailsScreen extends StatelessWidget {
                       padding: REdgeInsets.all(8.0),
                       child: Text(news.description ?? '', style: AppStyles.articleDescription),
                     ),
-                    const Spacer(), // pushes the row to bottom
+                    const Spacer(),
                   ],
                 ),
               ),
@@ -87,7 +87,6 @@ class NewDetailsScreen extends StatelessWidget {
             ],
           ),
         ),
-
       ),
     );
   }

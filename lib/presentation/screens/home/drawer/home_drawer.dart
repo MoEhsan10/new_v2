@@ -6,7 +6,7 @@ import 'package:news_v2/core/utils/colors_manager.dart';
 class HomeDrawer extends StatelessWidget {
  const  HomeDrawer({super.key, required this.onItemSelected});
 
-final  void Function(DrawerItem) onItemSelected;
+final void Function(DrawerItem) onItemSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +58,7 @@ final  void Function(DrawerItem) onItemSelected;
     );
   }
 }
+
 enum DrawerItem{
   categories,
   settings,

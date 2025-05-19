@@ -1,4 +1,14 @@
 class Source {
+
+  String? id;
+  String? name;
+  String? description;
+  String? url;
+  String? category;
+  String? language;
+  String? country;
+
+
   Source({
     required this.id,
     required this.name,
@@ -17,12 +27,6 @@ class Source {
     language = json['language'];
     country = json['country'];
   }
-  String? id;
-  String? name;
-  String? description;
-  String? url;
-  String? category;
-  String? language;
-  String? country;
+
 
 }

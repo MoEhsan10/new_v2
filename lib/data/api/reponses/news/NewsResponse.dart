@@ -13,8 +13,8 @@ class NewsResponse {
 
   factory NewsResponse.fromJson(Map<String, dynamic> json) {
     return NewsResponse(
-      status: json['status'] as String? ?? 'error',            // fallback
-      totalResults: json['totalResults'] as int? ?? 0,         // fallback
+      status: json['status'] as String? ?? 'error',
+      totalResults: json['totalResults'] as int? ?? 0,
       news: (json['articles'] as List<dynamic>?)
           ?.map((item) => News.fromJson(item as Map<String, dynamic>))
           .toList() ??

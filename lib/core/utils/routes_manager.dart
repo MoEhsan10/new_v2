@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:news_v2/presentation/screens/news/new_details_screen.dart';
 

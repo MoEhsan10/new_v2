@@ -1,6 +1,9 @@
 import 'Source.dart';
 
 class SourcesResponse {
+  String? status;
+  List<Source>? sources;
+
   SourcesResponse({
       this.status, 
       this.sources,});
@@ -14,7 +17,4 @@ class SourcesResponse {
       });
     }
   }
-  String? status;
-  List<Source>? sources;
-
 }

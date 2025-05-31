@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:news_v2/features/sources/data/models/Source.dart';
 import 'package:news_v2/features/sources/data/repositries/sources_repository.dart';
+import 'package:news_v2/shared/core/utils/service_locator.dart';
 
 class SourcesViewModel with ChangeNotifier {
- final repository =SourcesRepository();
+ late final SourcesRepository repository;
+
+ SourcesViewModel(){
+   repository= SourcesRepository(dataSource: ServiceLocator.sourcesDataSource);
+ }
 
 List<Source> sources =[];
 String? errorMessage;

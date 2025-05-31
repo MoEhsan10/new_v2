@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:news_v2/features/news/data/data_sources/news_data_source.dart';
 import 'package:news_v2/features/news/data/models/news.dart';
+import 'package:news_v2/features/news/data/repositories/news_repository.dart';
 
-class NewsViewModel extends ChangeNotifier{
-  final dataSource = NewsDataSource();
+class NewsViewModel extends ChangeNotifier {
+  final repository = NewsRepository();
 
-  List<News> newsList=[];
+  List<News> newsList = [];
   String? errorMessage;
-  bool isLoading =false;
+  bool isLoading = false;
 
-  Future<void> getNews(String sourceId)async{
-    isLoading=true;
+  Future<void> getNews(String sourceId) async {
+    isLoading = true;
     notifyListeners();
-    try{
-      final response = await dataSource.getNews(sourceId);
-      if (response.status == 'ok') {
-        newsList = response.news;
-      } else {
-        errorMessage = 'Failed to get news';
-      }
-    }catch(error){
-      errorMessage=error.toString();
+
+    try {
+      newsList = await repository.getNews(sourceId);
+    } catch (error) {
+      errorMessage = error.toString();
     }
-    isLoading=false;
+
+    isLoading = false;
     notifyListeners();
   }
 }

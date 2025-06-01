@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_v2/features/news/view_model/news_state.dart';
 import 'package:news_v2/features/news/view_model/news_view_model.dart';
-import 'package:provider/provider.dart';
 import '../../../../shared/widgets/error_indicator.dart';
 import '../../../../shared/widgets/loading_indicator.dart';
 import 'news_item.dart';
@@ -22,20 +23,23 @@ class _NewsListState extends State<NewsList> {
   @override
   Widget build(BuildContext context) {
     viewModel.getNews(widget.sourceId);
-    return ChangeNotifierProvider(create: (context) => viewModel,
+    return BlocProvider(create: (context) => viewModel,
     child:
-    Consumer<NewsViewModel>(builder: (_, viewModel, __) {
-      if (viewModel.isLoading) {
+    BlocBuilder<NewsViewModel,NewsState>
+      (builder: (_, state,) {
+      if (state is GetNewsLoading) {
       return const LoadingIndicator();
-    } else if (viewModel.errorMessage !=null) {
-      return const ErrorIndicator();
-    } else {
-      final newsList = viewModel.newsList;
+    } else if (state is GetNewsError) {
+      return  ErrorIndicator(message: state.errorMessage,);
+    } else if (state is GetNewsSuccess){
+      final newsList = state.newsList;
       return ListView.builder(
         itemCount: newsList.length,
         itemBuilder: (context, index) => NewsItem(news: newsList[index]),
       );
-    }
+    }else{
+        return const SizedBox();
+      }
     },
     ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_v2/features/sources/view_model/sources_states.dart';
 import 'package:news_v2/features/sources/view_model/sources_view_model.dart';
-import 'package:provider/provider.dart';
 import '../../../../shared/widgets/error_indicator.dart';
 import '../../../../shared/widgets/loading_indicator.dart';
 import '../../../sources/view/widgets/sources_tab.dart';
@@ -26,17 +27,18 @@ class _CategoryDetailsState extends State<CategoryDetails> {
 
   @override
   Widget build(BuildContext context) {
-   return ChangeNotifierProvider(create: (_) => viewModel,
-     child: Consumer<SourcesViewModel>
-       (builder: (_, viewModel, __) {
-     if(viewModel.isLoading){
+   return BlocProvider(create: (_) => viewModel,
+     child: BlocBuilder<SourcesViewModel,SourcesStates>
+       (builder: (_, state,) {
+     if(state is GetSourcesLoading){
         return const LoadingIndicator();
-      }else if(viewModel.errorMessage != null){
-        return const ErrorIndicator();
+      }else if(state is GetSourcesError){
+        return ErrorIndicator(message: state.errorMessage,);
+      }else if (state is GetSourcesSuccess){
+        return SourcesTab(sources: state.sources,);
       }else{
-        final sources = viewModel.sources;
-        return SourcesTab(sources: sources,);
-      }
+       return const SizedBox();
+     }
      },
      ),
    );

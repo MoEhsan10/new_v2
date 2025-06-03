@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_v2/features/search/view/widgets/custom_search_delegate.dart';
 
 import '../../../../shared/config/theme/app_styles.dart';
 import '../../../../shared/core/utils/assets_manager.dart';
@@ -35,6 +37,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 : selectedDrawerItem == DrawerItem.categories ?
             'News App': 'Settings',style: AppStyles.appBar,),
           centerTitle: true,
+          actions: [
+            Padding(
+              padding: REdgeInsets.symmetric(horizontal: 20,),
+              child: IconButton(onPressed: () => showSearch(context: context,delegate:CustomSearchDelegate() ), icon: const Icon(Icons.search,size: 32,)),
+            ),
+          ],
         ),
         drawer: HomeDrawer(onItemSelected: onDrawerItemSelected),
         body: selectedCategory != null ? CategoryDetails(categoryId: selectedCategory!.id,)

@@ -7,20 +7,20 @@ import '../../../../shared/core/utils/api_constants.dart';
 import '../models/NewsResponse.dart';
 import 'package:http/http.dart' as http;
 
-class NewsApiDataSource extends NewsDataSource{
+class NewsApiDataSource extends NewsDataSource {
   @override
-   Future<List<News>> getNews(String sourceId) async {
-    final uri = Uri.https(ApiConstants.baseUrl, ApiConstants.newsEndPoint,
-        {
-          'apiKey': ApiConstants.apiKey,
-          'sources': sourceId,
-        }
-    );
+  Future<List<News>> getNews(String sourceId) async {
+    final uri = Uri.https(ApiConstants.baseUrl, ApiConstants.newsEndPoint, {
+      'apiKey': ApiConstants.apiKey,
+      'sources': sourceId,
+    });
+
     final response = await http.get(uri);
     final json = jsonDecode(response.body);
     final newsResponse = NewsResponse.fromJson(json);
+
     if (newsResponse.status == 'ok') {
-     return newsResponse.news;
+      return newsResponse.news;
     } else {
       throw Exception('Failed to get news');
     }

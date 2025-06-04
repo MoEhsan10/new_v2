@@ -9,7 +9,7 @@ import 'news_item.dart';
 class NewsList extends StatefulWidget {
   const NewsList({super.key,required this.sourceId});
 
-final String sourceId;
+  final String sourceId;
 
   @override
   State<NewsList> createState() => _NewsListState();
@@ -24,24 +24,24 @@ class _NewsListState extends State<NewsList> {
   Widget build(BuildContext context) {
     viewModel.getNews(widget.sourceId);
     return BlocProvider(create: (context) => viewModel,
-    child:
-    BlocBuilder<NewsViewModel,NewsState>
-      (builder: (_, state,) {
-      if (state is GetNewsLoading) {
-      return const LoadingIndicator();
-    } else if (state is GetNewsError) {
-      return  ErrorIndicator(message: state.errorMessage,);
-    } else if (state is GetNewsSuccess){
-      final newsList = state.newsList;
-      return ListView.builder(
-        itemCount: newsList.length,
-        itemBuilder: (context, index) => NewsItem(news: newsList[index]),
-      );
-    }else{
-        return const SizedBox();
-      }
-    },
-    ),
+      child:
+      BlocBuilder<NewsViewModel,NewsState>
+        (builder: (_, state,) {
+        if (state is GetNewsLoading) {
+          return const LoadingIndicator();
+        } else if (state is GetNewsError) {
+          return  ErrorIndicator(message: state.errorMessage,);
+        } else if (state is GetNewsSuccess){
+          final newsList = state.newsList;
+          return ListView.builder(
+            itemCount: newsList.length,
+            itemBuilder: (context, index) => NewsItem(news: newsList[index]),
+          );
+        }else{
+          return const SizedBox();
+        }
+      },
+      ),
     );
   }
 }

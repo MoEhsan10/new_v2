@@ -9,7 +9,7 @@ class SearchApiDataSource extends SearchDataSource{
   @override
   Future<List<News>> getSearch(String query) async {
 
-    final uri = Uri.https(ApiConstants.baseUrl, ApiConstants.newsEndPoint, {
+    final uri = Uri.https(ApiConstants.baseUrl, ApiConstants.articlesEndPoint, {
       'apiKey': ApiConstants.apiKey,
       'q': query,
     });

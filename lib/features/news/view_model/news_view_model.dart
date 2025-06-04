@@ -4,11 +4,11 @@ import 'package:news_v2/features/news/view_model/news_state.dart';
 import 'package:news_v2/shared/core/utils/service_locator.dart';
 
 class NewsViewModel extends Cubit<NewsState> {
- late final NewsRepository repository ;
+  late final NewsRepository repository ;
 
- NewsViewModel() : super(NewsInitial()){
-   repository = NewsRepository(dataSource: ServiceLocator.newsDataSource);
- }
+  NewsViewModel() : super(NewsInitial()){
+    repository = NewsRepository(dataSource: ServiceLocator.newsDataSource);
+  }
 
 
 
